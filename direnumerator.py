@@ -14,7 +14,7 @@ import os
 from openpyxl import Workbook
 os.chdir('n:\\')  # should be changed to another drive - will hold output files [1 text and one Excel]
 
-tup_curdir = os.walk('m:\\')  # this is the drive we want to inventorize.
+tup_curdir = os.walk('X:\\')  # this is the drive we want to inventorize.
 
 with open('dirsN.txt', 'w', encoding='utf-8') as fin:
     counter = 0
@@ -36,6 +36,7 @@ def new_excel():
         for y, i in enumerate(fout):
             if y == 0:
                 y += 1
+            #Write data to sheet    
             ws1.cell(row=y, column=1).value = i.strip('"')  # debatable if .strip() is necessary
 
     wb.save('fess.xlsx') # change to desired name
