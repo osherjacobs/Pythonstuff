@@ -1,7 +1,7 @@
 # Code by OJ 10-07-2018
 
 ####################################################################################################################################
-# This script will inventarize the contents of a hard drive (changeable at 'tup_curdir = os.walk('i:\\'))'                         #
+# This script will inventarize the contents of a hard drive (changeable at 'tup_curdir = os.walk('X:\\'))'                         #
 # and write the file / dir names to a txt file and then dump the contents into an Excel file (using openpyxl) whereafter a set of  #
 # hyperlinks can be created to the files on disk.                                                                                  #
 #                                                                                                                                  #
