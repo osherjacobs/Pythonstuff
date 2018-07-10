@@ -5,7 +5,7 @@
 # and write the file / dir names to a txt file and then dump the contents into an Excel file (using openpyxl) whereafter a set of  #
 # hyperlinks can be created to the files on disk.                                                                                  #
 #                                                                                                                                  #
-# A little formatting and one copy action is necessary before creating hyperlinks with the =Hyperlink(a1;b1)                       #
+# A little formatting and one copy action is necessary before creating hyperlinks with the =Hyperlink(a1;b1)Excel function.        #
 #                                                                                                                                  #
 # The necessary Excel function for said formatting is detailed below for the Dutch language version I use.                         #
 ####################################################################################################################################
