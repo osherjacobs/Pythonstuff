@@ -12,11 +12,11 @@
 
 import os
 from openpyxl import Workbook
-os.chdir('n:\\')  # should be changed to another drive - will hold output files [1 text and one Excel]
+os.chdir('X:\\')  # should be changed to another drive - will hold output files [1 text and one Excel]
 
-tup_curdir = os.walk('m:\\')  # this is the drive we want to inventorize.
+tup_curdir = os.walk('D:\\')  # this is the drive we want to inventorize.
 
-file_name = 'dirsN.txt' # tmp holder for data to be copied to Excel / gets deleted at end.
+file_name = 'dirsN.txt'
 
 with open(file_name, 'w', encoding='utf-8') as fin:
     counter = 0
@@ -35,16 +35,14 @@ def new_excel():
     # acquire sheet
     ws1 = wb.active
     with open('dirsN.txt', 'r', encoding='utf-8') as fout:
-        for y, i in enumerate(fout):
-            if y == 0:
-                y += 1
-            ws1.cell(row=y, column=1).value = i.strip('"')  # debatable if .strip() is necessary
+        for y, i in enumerate(fout, start=1):
+            ws1.cell(row=y, column=1).value = i.strip('"')
 
     wb.save('fess.xlsx')  # change to desired name
 
 
 new_excel()
 
-os.remove(file_name) # comment/uncomment out as desired.
+os.remove(file_name)
 
 # To format out quotation marks for creation of hyperlinks in Excel run = WISSEN.CONTROL(cell) and copy down Eng = Clean; you need two columns anyway for hyperlink+descript.
