@@ -31,13 +31,15 @@ def remove_old_backups(location):
     path = location
     for f in os.listdir(path):
         if 'DTOPBACKUP' in f:  # run dir command from console : Windows Explorer lies and hides.....
-            if os.stat(f).st_mtime < now - (60):
+            if os.stat(f).st_mtime < now:
+                os.chmod(f, stat.S_IWRITE)
+                shutil.rmtree(f)
                 with open('log_removed_backups.txt', 'a', encoding='utf-8') as fd:
                     fd.write('Removed {} at {}'.format(f, datetime.datetime.now()))
                     fd.write('\n')
-                os.chmod(f, stat.S_IWRITE)
+
                 print('REMOVING {}'.format(f))
-                shutil.rmtree(f)
+
 
 
 # backup()
