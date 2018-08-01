@@ -17,7 +17,7 @@ for p,d,f in os.walk('M:\\'):
 	        stamp_file = int(stamp_file)
 	        stamp_file = time.gmtime(stamp_file)
 	        timobj = time.strftime(fmt, stamp_file)
-	        
+	        # log to text file
 	        with open('file_details.txt', 'a', encoding='utf-8') as fd:
 	            fd.write(file )
 	            fd.write("  TIMESTAMP: ")
