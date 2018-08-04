@@ -10,6 +10,7 @@ import send2trash
 old = now - (7 * (24 * 60 * 60))
 time_now = int(time.time())
 time_now = str(time_now)
+t1 = time_now
 
 
 def backup():
@@ -19,10 +20,11 @@ def backup():
         os.startfile('C:\\Users\\ojaco\\Desktop\\BITLOCKER_SCRIPTS\\dist\\whatever\\whatever.exe')
 
     try:
+        os.chdir('N:\\')
         print('STARTING BACKUP 1 !')
-        t1 = time_now
+
         source = 'c:\\Users\\ojaco\\Desktop'
-        shutil.copytree(source, 'N:\\DTOPBACKUP%s' % (t1))
+        shutil.make_archive('DTOPBACKUP%s' % (t1), 'zip', source)
 
     except:
         pass
@@ -40,14 +42,15 @@ def backup_of_backup():
 
     os.chdir('N:\\')
 
-    shutil.copytree('DTOPBACKUP%s' % (time_now), 'E:\\BCKPOFBCKP%s' % (time_now))
+    shutil.copy('DTOPBACKUP%s%s' % (t1, '.zip'), 'E:\\')
     print('BACKUP 2 PERFORMED !')
 
 
 def empty_recycle_bin():
+    print('Emptying Recycle bin')
     shell.SHEmptyRecycleBin(0, None, 1)
     print('Recycle bin emptied')
-    time.sleep(10)
+    time.sleep(1)
 
 
 def remove_old_backups(location):
@@ -65,13 +68,13 @@ def remove_old_backups(location):
 
                     print('REMOVED {}'.format(f))
 
-                    time.sleep(20)
+                    time.sleep(5)
                     empty_recycle_bin()
 
 
 backup()
-time.sleep(10)
+time.sleep(2)
 backup_of_backup()
-time.sleep(20)
+time.sleep(10)
 remove_old_backups('E:\\')
 remove_old_backups('N:\\')
