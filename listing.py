@@ -13,7 +13,6 @@ drives=drives.split('\000')[:-1]
 my_paths = drives
 
 
-
 def main_search():
     path = 'k:\\directory_of_drives'
 
