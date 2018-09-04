@@ -1,18 +1,21 @@
+# Code by OJ 04-09-18
 import os
-import pprint
+import sys
+import pickle
 
-path = 'k:\\directory_of_drives'
+counter = 0
 
-os.chdir(path)
+running = True
 
-ui = input('Please enter filename: ').lower()
+while running:
+    ui = input('Please enter filename: [ to quit press "q" and then "Enter" ] ').lower()
+    if ui == 'q':
+        sys.exit()
+    with open('dict_holder', 'rb') as fd:
+        holder = pickle.load(fd)
+        for item in holder:
+            if ui in item.lower():
+                counter +=1
+                print(item)
+        print('{} items with search term "{}" found'.format(counter, ui))
 
-data_files = os.listdir(os.getcwd())
-
-for file in data_files:
-    with open(file, 'r', encoding='utf-8') as fd:
-        for line in fd:
-            if ui in line.lower():
-                print(line)
-
-# TODO ADD WHILE LOOP ETC... TKINTER INTERFACE
